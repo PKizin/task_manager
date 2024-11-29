@@ -1,0 +1,5 @@
+{
+  "svelte.plugin.svelte.format.config.singleQuote": true,
+  "svelte.enable-ts-plugin": true,
+  "prettier.configPath": ".prettierrc"
+}

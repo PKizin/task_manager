@@ -1,0 +1,27 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Priority {
+  id    Int    @id @default(autoincrement())
+  name  String @unique
+  tasks Task[]
+}
+
+model Task {
+  id          Int      @id @default(autoincrement())
+  title       String   @default("New task")
+  description String   @default("New task")
+  priority    Priority @relation(fields: [priorityId], references: [id])
+  priorityId  Int
+  dueDate     DateTime @default(now())
+  completed   Boolean  @default(false)
+}
